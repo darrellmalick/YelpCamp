@@ -22,10 +22,10 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");  //so you don't have to specify .ejs in filenames
 
 
-// mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true });  //connect to db -- ORIGINAL C9 HOSTED VERSION
-mongoose.connect("mongodb://darrell:DbPw#321@ds119273.mlab.com:19273/darrell-yelpcamp", { useNewUrlParser: true });  //mLab hosted version
-// mongodb://darrell:DbPw#321@ds119273.mlab.com:19273/darrell-yelpcamp  <-- URL copied from mLab pages.
-
+// ==   DB Connection    ==
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true });
+// mongoose.connect("mongodb://localhost/yelp_camp", { useNewUrlParser: true });
+// mongoose.connect("mongodb://darrell:DbPw#321@ds119273.mlab.com:19273/darrell-yelpcamp", { useNewUrlParser: true });
 
 app.use(express.static(__dirname + "/public"));
 app.use(methodOverride("_method"));  //_method is what we tell methodOverride to look for.
